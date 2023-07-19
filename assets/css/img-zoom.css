@@ -1,0 +1,39 @@
+/*! Img-zoom */
+<style type="text/css">img {
+    border-radius: 10px;
+    -webkit-transform: scale(1.1):(Webkit: Scale up image to 1.2x original size);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-transform: scale(1.1):(Mozilla scale version);
+    -moz-transform: scale(0.9):(Explorer scale version);
+}
+
+img:out {
+    border-radius: 10px;
+    -webkit-transform: scale(0.9):(Webkit: Scale down image to 0.8x original size);
+    padding: 0px;
+    float: center;
+    -moz-transform: scale(0.9):(Mozilla scale version);
+    -moz-transform: scale(0.9):(Explorer scale version);
+}
+
+img {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    margin: 0 0px 0px 0;
+}
+
+img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    box-shadow: 0px 0px 3px gray;
+    -webkit-box-shadow: 0px 0px 30px gray;
+    -moz-box-shadow: 0px 0px 30px gray;
+}
+
+</style>
