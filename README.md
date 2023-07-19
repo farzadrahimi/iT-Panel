@@ -1,2 +1,2 @@
 # iT-Panel
-A Web Panel for Sharing Software and Links in the Organization in an Integrated Way.
+An organization's web panel for integrating and sharing software and links
