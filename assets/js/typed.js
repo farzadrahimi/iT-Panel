@@ -11,10 +11,10 @@
   "object" == typeof exports && "object" == typeof module
     ? (module.exports = e())
     : "function" == typeof define && define.amd
-    ? define([], e)
-    : "object" == typeof exports
-    ? (exports.Typed = e())
-    : (t.Typed = e());
+      ? define([], e)
+      : "object" == typeof exports
+        ? (exports.Typed = e())
+        : (t.Typed = e());
 })(this, function () {
   return (function (t) {
     function e(n) {
@@ -33,19 +33,19 @@
       }
       Object.defineProperty(e, "__esModule", { value: !0 });
       var i = (function () {
-          function t(t, e) {
-            for (var s = 0; s < e.length; s++) {
-              var n = e[s];
-              (n.enumerable = n.enumerable || !1),
-                (n.configurable = !0),
-                "value" in n && (n.writable = !0),
-                Object.defineProperty(t, n.key, n);
-            }
+        function t(t, e) {
+          for (var s = 0; s < e.length; s++) {
+            var n = e[s];
+            (n.enumerable = n.enumerable || !1),
+              (n.configurable = !0),
+              "value" in n && (n.writable = !0),
+              Object.defineProperty(t, n.key, n);
           }
-          return function (e, s, n) {
-            return s && t(e.prototype, s), n && t(e, n), e;
-          };
-        })(),
+        }
+        return function (e, s, n) {
+          return s && t(e.prototype, s), n && t(e, n), e;
+        };
+      })(),
         r = s(1),
         o = s(3),
         a = (function () {
@@ -66,8 +66,8 @@
                   this.typingComplete ||
                     this.pause.status ||
                     (this.toggleBlinking(!0),
-                    (this.pause.status = !0),
-                    this.options.onStop(this.arrayPos, this));
+                      (this.pause.status = !0),
+                      this.options.onStop(this.arrayPos, this));
                 },
               },
               {
@@ -76,16 +76,16 @@
                   this.typingComplete ||
                     (this.pause.status &&
                       ((this.pause.status = !1),
-                      this.pause.typewrite
-                        ? this.typewrite(
+                        this.pause.typewrite
+                          ? this.typewrite(
                             this.pause.curString,
                             this.pause.curStrPos
                           )
-                        : this.backspace(
+                          : this.backspace(
                             this.pause.curString,
                             this.pause.curStrPos
                           ),
-                      this.options.onStart(this.arrayPos, this)));
+                        this.options.onStart(this.arrayPos, this)));
                 },
               },
               {
@@ -104,14 +104,14 @@
                   clearInterval(this.timeout),
                     this.replaceText(""),
                     this.cursor &&
-                      this.cursor.parentNode &&
-                      (this.cursor.parentNode.removeChild(this.cursor),
+                    this.cursor.parentNode &&
+                    (this.cursor.parentNode.removeChild(this.cursor),
                       (this.cursor = null)),
                     (this.strPos = 0),
                     (this.arrayPos = 0),
                     (this.curLoop = 0),
                     t &&
-                      (this.insertCursor(),
+                    (this.insertCursor(),
                       this.options.onReset(this),
                       this.begin());
                 },
@@ -128,13 +128,13 @@
                     (this.timeout = setTimeout(function () {
                       t.currentElContent && 0 !== t.currentElContent.length
                         ? t.backspace(
-                            t.currentElContent,
-                            t.currentElContent.length
-                          )
+                          t.currentElContent,
+                          t.currentElContent.length
+                        )
                         : t.typewrite(
-                            t.strings[t.sequence[t.arrayPos]],
-                            t.strPos
-                          );
+                          t.strings[t.sequence[t.arrayPos]],
+                          t.strPos
+                        );
                     }, this.startDelay));
                 },
               },
@@ -145,48 +145,48 @@
                   this.fadeOut &&
                     this.el.classList.contains(this.fadeOutClass) &&
                     (this.el.classList.remove(this.fadeOutClass),
-                    this.cursor &&
+                      this.cursor &&
                       this.cursor.classList.remove(this.fadeOutClass));
                   var n = this.humanizer(this.typeSpeed),
                     i = 1;
                   return this.pause.status === !0
                     ? void this.setPauseStatus(t, e, !0)
                     : void (this.timeout = setTimeout(function () {
-                        e = o.htmlParser.typeHtmlChars(t, e, s);
-                        var n = 0,
-                          r = t.substr(e);
-                        if ("^" === r.charAt(0) && /^\^\d+/.test(r)) {
-                          var a = 1;
-                          (r = /\d+/.exec(r)[0]),
-                            (a += r.length),
-                            (n = parseInt(r)),
-                            (s.temporaryPause = !0),
-                            s.options.onTypingPaused(s.arrayPos, s),
-                            (t = t.substring(0, e) + t.substring(e + a)),
-                            s.toggleBlinking(!0);
-                        }
-                        if ("`" === r.charAt(0)) {
-                          for (
-                            ;
-                            "`" !== t.substr(e + i).charAt(0) &&
-                            (i++, !(e + i > t.length));
+                      e = o.htmlParser.typeHtmlChars(t, e, s);
+                      var n = 0,
+                        r = t.substr(e);
+                      if ("^" === r.charAt(0) && /^\^\d+/.test(r)) {
+                        var a = 1;
+                        (r = /\d+/.exec(r)[0]),
+                          (a += r.length),
+                          (n = parseInt(r)),
+                          (s.temporaryPause = !0),
+                          s.options.onTypingPaused(s.arrayPos, s),
+                          (t = t.substring(0, e) + t.substring(e + a)),
+                          s.toggleBlinking(!0);
+                      }
+                      if ("`" === r.charAt(0)) {
+                        for (
+                          ;
+                          "`" !== t.substr(e + i).charAt(0) &&
+                          (i++, !(e + i > t.length));
 
-                          );
-                          var u = t.substring(0, e),
-                            l = t.substring(u.length + 1, e + i),
-                            c = t.substring(e + i + 1);
-                          (t = u + l + c), i--;
-                        }
-                        s.timeout = setTimeout(function () {
-                          s.toggleBlinking(!1),
-                            e >= t.length
-                              ? s.doneTyping(t, e)
-                              : s.keepTyping(t, e, i),
-                            s.temporaryPause &&
-                              ((s.temporaryPause = !1),
-                              s.options.onTypingResumed(s.arrayPos, s));
-                        }, n);
-                      }, n));
+                        );
+                        var u = t.substring(0, e),
+                          l = t.substring(u.length + 1, e + i),
+                          c = t.substring(e + i + 1);
+                        (t = u + l + c), i--;
+                      }
+                      s.timeout = setTimeout(function () {
+                        s.toggleBlinking(!1),
+                          e >= t.length
+                            ? s.doneTyping(t, e)
+                            : s.keepTyping(t, e, i),
+                          s.temporaryPause &&
+                          ((s.temporaryPause = !1),
+                            s.options.onTypingResumed(s.arrayPos, s));
+                      }, n);
+                    }, n));
                 },
               },
               {
@@ -194,7 +194,7 @@
                 value: function (t, e, s) {
                   0 === e &&
                     (this.toggleBlinking(!1),
-                    this.options.preStringTyped(this.arrayPos, this)),
+                      this.options.preStringTyped(this.arrayPos, this)),
                     (e += s);
                   var n = t.substr(0, e);
                   this.replaceText(n), this.typewrite(t, e);
@@ -208,10 +208,10 @@
                     this.toggleBlinking(!0),
                     (this.arrayPos === this.strings.length - 1 &&
                       (this.complete(),
-                      this.loop === !1 || this.curLoop === this.loopCount)) ||
-                      (this.timeout = setTimeout(function () {
-                        s.backspace(t, e);
-                      }, this.backDelay));
+                        this.loop === !1 || this.curLoop === this.loopCount)) ||
+                    (this.timeout = setTimeout(function () {
+                      s.backspace(t, e);
+                    }, this.backDelay));
                 },
               },
               {
@@ -235,7 +235,7 @@
                     e > s.stopNum
                       ? (e--, s.backspace(t, e))
                       : e <= s.stopNum &&
-                        (s.arrayPos++,
+                      (s.arrayPos++,
                         s.arrayPos === s.strings.length
                           ? ((s.arrayPos = 0),
                             s.options.onLastStringBackspaced(),
@@ -267,9 +267,9 @@
                     (this.pause.status ||
                       (this.cursorBlinking !== t &&
                         ((this.cursorBlinking = t),
-                        t
-                          ? this.cursor.classList.add("typed-cursor--blink")
-                          : this.cursor.classList.remove(
+                          t
+                            ? this.cursor.classList.add("typed-cursor--blink")
+                            : this.cursor.classList.remove(
                               "typed-cursor--blink"
                             ))));
                 },
@@ -296,7 +296,7 @@
                   return (
                     (this.el.className += " " + this.fadeOutClass),
                     this.cursor &&
-                      (this.cursor.className += " " + this.fadeOutClass),
+                    (this.cursor.className += " " + this.fadeOutClass),
                     setTimeout(function () {
                       t.arrayPos++,
                         t.replaceText(""),
@@ -313,10 +313,10 @@
                   this.attr
                     ? this.el.setAttribute(this.attr, t)
                     : this.isInput
-                    ? (this.el.value = t)
-                    : "html" === this.contentType
-                    ? (this.el.innerHTML = t)
-                    : (this.el.textContent = t);
+                      ? (this.el.value = t)
+                      : "html" === this.contentType
+                        ? (this.el.innerHTML = t)
+                        : (this.el.textContent = t);
                 },
               },
               {
@@ -327,9 +327,9 @@
                     (this.el.addEventListener("focus", function (e) {
                       t.stop();
                     }),
-                    this.el.addEventListener("blur", function (e) {
-                      (t.el.value && 0 !== t.el.value.length) || t.start();
-                    }));
+                      this.el.addEventListener("blur", function (e) {
+                        (t.el.value && 0 !== t.el.value.length) || t.start();
+                      }));
                 },
               },
               {
@@ -338,9 +338,9 @@
                   this.showCursor &&
                     (this.cursor ||
                       ((this.cursor = document.createElement("span")),
-                      (this.cursor.className = "typed-cursor"),
-                      (this.cursor.innerHTML = this.cursorChar),
-                      this.el.parentNode &&
+                        (this.cursor.className = "typed-cursor"),
+                        (this.cursor.innerHTML = this.cursorChar),
+                        this.el.parentNode &&
                         this.el.parentNode.insertBefore(
                           this.cursor,
                           this.el.nextSibling
@@ -364,15 +364,15 @@
       }
       Object.defineProperty(e, "__esModule", { value: !0 });
       var r =
-          Object.assign ||
-          function (t) {
-            for (var e = 1; e < arguments.length; e++) {
-              var s = arguments[e];
-              for (var n in s)
-                Object.prototype.hasOwnProperty.call(s, n) && (t[n] = s[n]);
-            }
-            return t;
-          },
+        Object.assign ||
+        function (t) {
+          for (var e = 1; e < arguments.length; e++) {
+            var s = arguments[e];
+            for (var n in s)
+              Object.prototype.hasOwnProperty.call(s, n) && (t[n] = s[n]);
+          }
+          return t;
+        },
         o = (function () {
           function t(t, e) {
             for (var s = 0; s < e.length; s++) {
@@ -402,40 +402,40 @@
                     ("string" == typeof s
                       ? (t.el = document.querySelector(s))
                       : (t.el = s),
-                    (t.options = r({}, u["default"], e)),
-                    (t.isInput = "input" === t.el.tagName.toLowerCase()),
-                    (t.attr = t.options.attr),
-                    (t.bindInputFocusEvents = t.options.bindInputFocusEvents),
-                    (t.showCursor = !t.isInput && t.options.showCursor),
-                    (t.cursorChar = t.options.cursorChar),
-                    (t.cursorBlinking = !0),
-                    (t.elContent = t.attr
-                      ? t.el.getAttribute(t.attr)
-                      : t.el.textContent),
-                    (t.contentType = t.options.contentType),
-                    (t.typeSpeed = t.options.typeSpeed),
-                    (t.startDelay = t.options.startDelay),
-                    (t.backSpeed = t.options.backSpeed),
-                    (t.smartBackspace = t.options.smartBackspace),
-                    (t.backDelay = t.options.backDelay),
-                    (t.fadeOut = t.options.fadeOut),
-                    (t.fadeOutClass = t.options.fadeOutClass),
-                    (t.fadeOutDelay = t.options.fadeOutDelay),
-                    (t.isPaused = !1),
-                    (t.strings = t.options.strings.map(function (t) {
-                      return t.trim();
-                    })),
-                    "string" == typeof t.options.stringsElement
-                      ? (t.stringsElement = document.querySelector(
+                      (t.options = r({}, u["default"], e)),
+                      (t.isInput = "input" === t.el.tagName.toLowerCase()),
+                      (t.attr = t.options.attr),
+                      (t.bindInputFocusEvents = t.options.bindInputFocusEvents),
+                      (t.showCursor = !t.isInput && t.options.showCursor),
+                      (t.cursorChar = t.options.cursorChar),
+                      (t.cursorBlinking = !0),
+                      (t.elContent = t.attr
+                        ? t.el.getAttribute(t.attr)
+                        : t.el.textContent),
+                      (t.contentType = t.options.contentType),
+                      (t.typeSpeed = t.options.typeSpeed),
+                      (t.startDelay = t.options.startDelay),
+                      (t.backSpeed = t.options.backSpeed),
+                      (t.smartBackspace = t.options.smartBackspace),
+                      (t.backDelay = t.options.backDelay),
+                      (t.fadeOut = t.options.fadeOut),
+                      (t.fadeOutClass = t.options.fadeOutClass),
+                      (t.fadeOutDelay = t.options.fadeOutDelay),
+                      (t.isPaused = !1),
+                      (t.strings = t.options.strings.map(function (t) {
+                        return t.trim();
+                      })),
+                      "string" == typeof t.options.stringsElement
+                        ? (t.stringsElement = document.querySelector(
                           t.options.stringsElement
                         ))
-                      : (t.stringsElement = t.options.stringsElement),
-                    t.stringsElement)
+                        : (t.stringsElement = t.options.stringsElement),
+                      t.stringsElement)
                   ) {
                     (t.strings = []), (t.stringsElement.style.display = "none");
                     var n = Array.prototype.slice.apply(
-                        t.stringsElement.children
-                      ),
+                      t.stringsElement.children
+                    ),
                       i = n.length;
                     if (i)
                       for (var o = 0; o < i; o += 1) {
@@ -471,10 +471,10 @@
                   return (e = t.attr
                     ? t.el.getAttribute(t.attr)
                     : t.isInput
-                    ? t.el.value
-                    : "html" === t.contentType
-                    ? t.el.innerHTML
-                    : t.el.textContent);
+                      ? t.el.value
+                      : "html" === t.contentType
+                        ? t.el.innerHTML
+                        : t.el.textContent);
                 },
               },
               {
@@ -493,10 +493,10 @@
                       (n +=
                         "\n        .typed-cursor{\n          opacity: 1;\n        }\n        .typed-cursor.typed-cursor--blink{\n          animation: typedjsBlink 0.7s infinite;\n          -webkit-animation: typedjsBlink 0.7s infinite;\n                  animation: typedjsBlink 0.7s infinite;\n        }\n        @keyframes typedjsBlink{\n          50% { opacity: 0.0; }\n        }\n        @-webkit-keyframes typedjsBlink{\n          0% { opacity: 1; }\n          50% { opacity: 0.0; }\n          100% { opacity: 1; }\n        }\n      "),
                       t.fadeOut &&
-                        (n +=
-                          "\n        .typed-fade-out{\n          opacity: 0;\n          transition: opacity .25s;\n        }\n        .typed-cursor.typed-cursor--blink.typed-fade-out{\n          -webkit-animation: 0;\n          animation: 0;\n        }\n      "),
+                      (n +=
+                        "\n        .typed-fade-out{\n          opacity: 0;\n          transition: opacity .25s;\n        }\n        .typed-cursor.typed-cursor--blink.typed-fade-out{\n          -webkit-animation: 0;\n          animation: 0;\n        }\n      "),
                       0 !== s.length &&
-                        ((s.innerHTML = n), document.body.appendChild(s));
+                      ((s.innerHTML = n), document.body.appendChild(s));
                   }
                 },
               },
@@ -536,17 +536,17 @@
         attr: null,
         bindInputFocusEvents: !1,
         contentType: "html",
-        onBegin: function (t) {},
-        onComplete: function (t) {},
-        preStringTyped: function (t, e) {},
-        onStringTyped: function (t, e) {},
-        onLastStringBackspaced: function (t) {},
-        onTypingPaused: function (t, e) {},
-        onTypingResumed: function (t, e) {},
-        onReset: function (t) {},
-        onStop: function (t, e) {},
-        onStart: function (t, e) {},
-        onDestroy: function (t) {},
+        onBegin: function (t) { },
+        onComplete: function (t) { },
+        preStringTyped: function (t, e) { },
+        onStringTyped: function (t, e) { },
+        onLastStringBackspaced: function (t) { },
+        onTypingPaused: function (t, e) { },
+        onTypingResumed: function (t, e) { },
+        onReset: function (t) { },
+        onStop: function (t, e) { },
+        onStart: function (t, e) { },
+        onDestroy: function (t) { },
       };
       (e["default"] = s), (t.exports = e["default"]);
     },
@@ -558,19 +558,19 @@
       }
       Object.defineProperty(e, "__esModule", { value: !0 });
       var n = (function () {
-          function t(t, e) {
-            for (var s = 0; s < e.length; s++) {
-              var n = e[s];
-              (n.enumerable = n.enumerable || !1),
-                (n.configurable = !0),
-                "value" in n && (n.writable = !0),
-                Object.defineProperty(t, n.key, n);
-            }
+        function t(t, e) {
+          for (var s = 0; s < e.length; s++) {
+            var n = e[s];
+            (n.enumerable = n.enumerable || !1),
+              (n.configurable = !0),
+              "value" in n && (n.writable = !0),
+              Object.defineProperty(t, n.key, n);
           }
-          return function (e, s, n) {
-            return s && t(e.prototype, s), n && t(e, n), e;
-          };
-        })(),
+        }
+        return function (e, s, n) {
+          return s && t(e.prototype, s), n && t(e, n), e;
+        };
+      })(),
         i = (function () {
           function t() {
             s(this, t);
