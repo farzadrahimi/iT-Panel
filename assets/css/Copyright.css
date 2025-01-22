@@ -1,20 +1,13 @@
-body {
-    position: relative;
-    /* Sets up positioning for your footer
-*/
-}
-
 .sticky {
     position: fixed;
-    /* Here's what sticks it */
-    bottom: 0;
-    /* to the bottom of the window */
-    left: 0;
-    /* and to the left of the window. */
-    height: 40px;
-    width: 100%;
-    padding-top: 0px;
-    background: #000000;
+    bottom: 10px; /* فاصله از پایین صفحه */
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8); /* پس‌زمینه مشکی شفاف */
     color: #ffffff;
     text-align: center;
+    border-radius: 10px; /* گوشه‌های گرد */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* سایه برای جلوه بهتر */
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; /* افکت انتقال برای تغییرات */
 }
