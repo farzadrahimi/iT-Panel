@@ -331,8 +331,6 @@ window.onkeyup = function(e){
 		numberMonthFinal = 1;
 	}
 	
-	console.log(numberMonthFinal)
-	
 	const newMonthDOM = document.getElementsByClassName("month-letter")[(numberMonthFinal-1)];
 	
 	const eventClick = new Event("click");
